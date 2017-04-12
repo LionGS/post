@@ -1,0 +1,22 @@
+<h1>글을 수정하는 페이지입니다.</h1>
+<div class="container">
+  <form action="/posts_controller/update/<%= @edit_post.id %>" method="post">
+    <div class="form-group row">
+      <label for="title" class="col-sm-2 col-form-label">title</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="title" name="title" placeholder="제목" value="<%= @edit_post.title %>">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="content" class="col-sm-2 col-form-label">content</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="content" rows="5" name="content" placeholder="내용을 채워주세요."><%= @edit_post.content %></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+        <button type="submit" class="btn btn-primary">글 올리기</button>
+      </div>
+    </div>
+  </form>
+</div>

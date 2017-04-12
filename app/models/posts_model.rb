@@ -1,0 +1,2 @@
+class PostsModel < ApplicationRecord
+end
