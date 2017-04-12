@@ -37,7 +37,11 @@ class PostsControllerController < ApplicationController
     @post = PostsModel.find(params[:post_num])
     if @post.password == params[:password].to_i
       @post.destroy
+      flash[:success] = "글이 삭제되었습니다."
+      redirect_to root_path
+    else
+      flash[:danger] = "비밀번호가 틀렸습니다."
+      redirect_to root_path
     end
-    redirect_to root_path
   end
 end

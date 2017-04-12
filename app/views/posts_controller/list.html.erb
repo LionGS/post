@@ -1,3 +1,9 @@
+<% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+
+            <%= value %>
+      </div>
+<% end %>
 <div class="container">
   <h1>PostsController#list</h1><br>
   <a href="/posts_controller/new" class="btn btn-primary">글쓰기</a>
