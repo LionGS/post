@@ -1,6 +1,6 @@
 class PostsControllerController < ApplicationController
   def list
-    @every_posts = PostsModel.all
+    @every_posts = PostsModel.all.reverse
   end
 
   def new
@@ -12,7 +12,7 @@ class PostsControllerController < ApplicationController
     @post.content = params[:content]
     @post.password = params[:password]
     @post.save
-
+    flash[:success] = "게시글이 작성 되었습니다."
     redirect_to root_path
   end
 
@@ -26,18 +26,24 @@ class PostsControllerController < ApplicationController
 
   def update
     @post = PostsModel.find(params[:id])
-    @post.title = params[:title]
-    @post.content = params[:content]
-    @post.save
+    if @post.password.to_s == params[:password]
+      @post.title = params[:title]
+      @post.content = params[:content]
+      @post.save
+      flash[:success] = "게시글이 수정 되었습니다."
+      redirect_to root_path
+    else
+      flash[:danger] = "비밀번호가 틀렸습니다."
+      redirect_to '/posts_controller/edit/' + @post.id.to_s
+    end
 
-    redirect_to root_path
   end
 
   def destroy
     @post = PostsModel.find(params[:post_num])
-    if @post.password == params[:password].to_i
+    if @post.password.to_s == params[:password]
       @post.destroy
-      flash[:success] = "글이 삭제되었습니다."
+      flash[:success] = "게시글이 삭제되었습니다."
       redirect_to root_path
     else
       flash[:danger] = "비밀번호가 틀렸습니다."
