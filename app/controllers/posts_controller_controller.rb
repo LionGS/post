@@ -8,9 +8,9 @@ class PostsControllerController < ApplicationController
 
   def create
     @post = PostsModel.new
-    @post.title = params[:title]
-    @post.content = params[:content]
-    @post.password = params[:password]
+    @post.title = params[:title_c]
+    @post.content = params[:content_c]
+    @post.password = params[:password_c]
     @post.save
     flash[:success] = "게시글이 작성 되었습니다."
     redirect_to root_path
@@ -43,7 +43,7 @@ class PostsControllerController < ApplicationController
     @post = PostsModel.find(params[:post_num])
     if @post.password.to_s == params[:password]
       @post.destroy
-      flash[:success] = "게시글이 삭제되었습니다."
+      flash[:warning] = "게시글이 삭제되었습니다."
       redirect_to root_path
     else
       flash[:danger] = "비밀번호가 틀렸습니다."
