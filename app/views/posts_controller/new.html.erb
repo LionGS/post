@@ -1,5 +1,5 @@
 <h1>새로운 글 쓰는 페이지입니다.</h1>
-<div class="container">
+<div class="container py-2">
   <form action="/posts_controller/create" method="post">
     <div class="form-group row">
       <label for="title" class="col-sm-2 col-form-label">title</label>
@@ -17,7 +17,8 @@
       </div>
     </div>
     <div class="form-group row">
-      <div class="offset-sm-2 col-sm-10">
+      <div class="offset-sm-2 col-sm-10 d-flex justify-content-end">
+        <%= link_to "취소", {controller: "posts_controller", action: "list"}, class:"btn btn-secondary mx-2", role:"button" %>
         <button type="submit" class="btn btn-primary">글 올리기</button>
       </div>
     </div>

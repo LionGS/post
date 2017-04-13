@@ -8,11 +8,11 @@ Rails.application.routes.draw do
 
   post 'posts_controller/create' => 'posts_controller#create'
 
-  get 'posts_controller/show/:id' => 'posts_controller#show'
+  get 'posts_controller/show/:id_s' => 'posts_controller#show'
 
-  get 'posts_controller/edit/:id' => 'posts_controller#edit'
+  get 'posts_controller/edit/:id_e' => 'posts_controller#edit'
 
-  post 'posts_controller/update/:id' => 'posts_controller#update'
+  post 'posts_controller/update/:id_u' => 'posts_controller#update'
 
   post 'posts_controller/destroy' => 'posts_controller#destroy'
 

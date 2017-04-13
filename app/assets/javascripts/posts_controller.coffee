@@ -6,5 +6,5 @@ $ ->
     button = $(event.relatedTarget)
     recipient = button.data('link')
     modal = $(this)
-    modal.find('#post_num').val recipient
+    modal.find('#post_num_d').val recipient
     return
