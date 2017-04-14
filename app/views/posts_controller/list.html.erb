@@ -14,7 +14,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th >#</th>
+        <th>#</th>
         <th>title</th>
         <th></th>
         <th></th>
@@ -25,7 +25,7 @@
       <% @every_posts.each do |each_post| %>
         <tr>
           <th scope="row"><%= each_post.id %></th>
-          <td><a href="/posts_controller/show/<%= each_post.id %>"><%= each_post.title %></a></td>
+          <td><a href="/posts_controller/show/<%= each_post.id %>"><%= each_post.title %></a> (<%= each_post.replies.count %>)</td>
           <td><a href="/posts_controller/edit/<%= each_post.id %>">수정</a>|<a data-link="<%= each_post.id %>" href="" data-toggle="modal" data-target="#myModal">삭제</a></td>
           <td></td>
           <td></td>
