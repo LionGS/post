@@ -16,5 +16,7 @@ Rails.application.routes.draw do
 
   post 'posts_controller/destroy' => 'posts_controller#destroy'
 
+  post "/posts_controller/reply_write" => 'posts_controller#reply_write'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

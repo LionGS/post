@@ -3,8 +3,22 @@
     <h3 class="card-title"><%= @post.title %></h3>
     <hr class="my-4">
     <p class="card-text"><%= @post.content %></p>
+
+    <form action="/posts_controller/reply_write" method="post" class="text-right">
+      <div class="form-group">
+        <textarea class="form-control" name="comments" rows="3" placeholder="댓글을 달아주세요."></textarea>
+        <input type="hidden" name="id_of_post" value="<%= @post.id %>">
+      </div>
+      <button type="submit" class="btn btn-primary">댓글 달기</button>
+    </form>
+
+    <% @post.replies.each do |s| %>
+      <%= s.content %> <br>
+    <% end %>
+
     <div class="card-footer text-right">
       <a class="btn btn-primary" href="/posts_controller/list" role="button">뒤로</a>
     </div>
+
   </div>
 </div>

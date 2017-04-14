@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170411140321) do
+ActiveRecord::Schema.define(version: 20170413100817) do
 
   create_table "posts_models", force: :cascade do |t|
     t.string   "title"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(version: 20170411140321) do
     t.integer  "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "posts_model_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end

@@ -11,9 +11,13 @@ class PostsControllerController < ApplicationController
     @post.title = params[:title_c]
     @post.content = params[:content_c]
     @post.password = params[:password_c]
-    @post.save
-    flash[:success] = "게시글이 작성 되었습니다."
-    redirect_to root_path
+    if @post.save
+      flash[:success] = "게시글이 작성 되었습니다."
+      redirect_to root_path
+    else
+      render :text => @post.errors.messages
+    end
+
   end
 
   def show
@@ -50,5 +54,13 @@ class PostsControllerController < ApplicationController
       flash[:danger] = "비밀번호가 틀렸습니다."
       redirect_to root_path
     end
+  end
+
+  def reply_write
+    @reply = Reply.new
+    @reply.content = params[:comments]
+    @reply.posts_model_id = params[:id_of_post]
+    @reply.save
+    redirect_to "/posts_controller/show/#{params[:id_of_post]}"
   end
 end
